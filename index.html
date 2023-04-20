@@ -11,6 +11,7 @@
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
+    <link rel="stylesheet" href="./style.css">    
     <title>Hello from Electron renderer!</title>
   </head>
   <body>
@@ -18,7 +19,11 @@
     <p>👋</p>
     <p id="info">
     </p>
-    <audio id="audio" controls></audio>
+    <div>
+      <button><img id="prev" src="./assets/prev.png"></img></button>
+      <audio id="audio" controls></audio>
+      <button><img id="next" src="./assets/next.png"></img></button>
+    </div>
   </body>
   <script src="./renderer.js"></script>
 </html>
