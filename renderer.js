@@ -16,11 +16,13 @@ function playSong(songsFromAlbum, i, audio) {
 
   audio.addEventListener("ended", () => {
     currentSong = (currentSong + 1) % songsFromAlbum.length;
-    audio.setAttribute("src", `./public/uploads/${songsFromAlbum[currentSong].path}`);
+    audio.setAttribute(
+      "src",
+      `./public/uploads/${songsFromAlbum[currentSong].path}`
+    );
     audio.play();
   });
 }
-
 
 /*** Display artists list ***/
 artists.forEach((artist) => {
@@ -58,11 +60,9 @@ artists.forEach((artist) => {
           ulSongs.appendChild(song);
 
           /*** Play song***/
-          song.addEventListener(
-            "click", () => {
+          song.addEventListener("click", () => {
             playSong(songsFromAlbum, i, audio);
-          }
-          );
+          });
         }
         /*** Next song ***/
         const nextButton = document.getElementById("next");
@@ -76,6 +76,28 @@ artists.forEach((artist) => {
           }
           currentSong =
             (currentSong + 1 + songsFromAlbum.length) % songsFromAlbum.length;
+          audio.setAttribute(
+            "src",
+            `./public/uploads/${songsFromAlbum[currentSong].path}`
+          );
+          audio.addEventListener("loadedmetadata", () => {
+            audio.play();
+            isPlaying = true;
+          });
+        });
+
+        /*** Next song ***/
+        const prevButton = document.getElementById("prev");
+        prevButton.addEventListener("click", () => {
+          if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+          }
+          if (currentSong === -1) {
+            return;
+          }
+          currentSong =
+            (currentSong - 1 + songsFromAlbum.length) % songsFromAlbum.length;
           audio.setAttribute(
             "src",
             `./public/uploads/${songsFromAlbum[currentSong].path}`
