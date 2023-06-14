@@ -1,5 +1,6 @@
 const { contextBridge } = require('electron')
 const db = require('better-sqlite3')('./resources/jukebox.db');
+const fs = require('fs');
 
 contextBridge.exposeInMainWorld('versions', {
   node: () => process.versions.node,
@@ -28,4 +29,9 @@ contextBridge.exposeInMainWorld('versions', {
     console.log("I searched all songs from album id")
     return rows
   },
+  fscopy: (avatarObj, destinationPath) => { fs.copyFile(avatarObj, destinationPath, (err) => {
+    if (err) throw err;
+    console.log('File was copied to destination');
+  });
+  }
 })

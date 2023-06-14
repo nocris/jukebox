@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="admin">
+        <a id="back-button-link" href="index.html"><img id="back-button" src="./assets/back-button.png" alt="" /></a>
+        <h1>Admin</h1>
+    </div>
+    <div id="logos-container">
+        <a id="artist-button"><img id="artist-logo" src="./assets/artist.png" alt="" /></a>
+        <a id="upload-button"><img id="upload-logo" src="./assets/upload.png" alt="" /></a>
+        <a id="music-button"><img id="music-logo" src="./assets/music.png" alt="" /></a>
+    </div>
+    <br><br>
+    <div id="central-container">
+        <form action="" id="form">
+            <select type="text" name="artist" id="inputArtist" class="form-control" placeholder="Artist name">
+                <option value="">--Please choose an Artist--</option>
+            </select>
+            <select type="text" name="album" id="inputAlbum" class="form-control" placeholder="Album title">
+                <option value="">--Please choose an Album--</option>
+            </select>
+            <input type="text" name="song" id="inputSong" class="form-control" placeholder="Song title" />
+            <input type="file" id="avatar" name="avatar" accept="audio/*,.mp3,image/*" multiple />
+            <button id="submit-button">submit</button>
+        </form>
+    </div>
+</body>
+<script type='module' src="admin.js"></script>
+</html>
