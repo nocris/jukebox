@@ -9,11 +9,9 @@ let player = document.getElementById("player");
 let isPlaying = false;
 let textTitle = document.getElementById("text-title") 
 
-// albumTitle()
 const selectedAlbum = JSON.parse(localStorage.getItem("selectedAlbum"));
 
 console.log(selectedAlbum)
-// albumTitle(selectedAlbum.name)
 displaySongs(selectedAlbum);
 title()
 
@@ -32,6 +30,7 @@ function title(){
 function playSong(song) {
   currentSongIndex = song.position;
   currentSong = song;
+
   if (isPlaying) {
     player.pause();
     isPlaying = false;
@@ -120,6 +119,7 @@ function displaySongs(album) {
 
   const albumDiv = document.createElement("div");
   const albumName = document.createElement("h2");
+  albumName.setAttribute('class', 'album-name')
   albumName.innerText = album.name;
   albumDiv.appendChild(albumName);
   albumDiv.setAttribute("data-album", album.id);
@@ -135,6 +135,7 @@ function displaySongs(album) {
     .forEach((song) => {
       const li = document.createElement("li");
       const button = document.createElement("button");
+      button.setAttribute('class', "button-28")
       button.innerText = song.name;
       button.addEventListener("click", () => {
         playSong(song);
@@ -154,12 +155,12 @@ player.addEventListener("ended", playNextSong);
 
 const nextButton = document.getElementById("next");
 nextButton.addEventListener("click", (event)=>{
-  event.preventDefault(); // Evita il comportamento predefinito (ad esempio, il caricamento di una nuova pagina)
+  event.preventDefault();
   playNextSong()
 } );
 
 const prevButton = document.getElementById("prev");
 prevButton.addEventListener("click", (event)=>{
-  event.preventDefault(); // Evita il comportamento predefinito (ad esempio, il caricamento di una nuova pagina)
+  event.preventDefault();
   playPreviousSong()
 } );
