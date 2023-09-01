@@ -21,18 +21,23 @@
     </div>
     <br><br>
     <div id="central-container">
-        <form action="" id="form">
-            <select type="text" name="artist" id="inputArtist" class="form-control" placeholder="Artist name">
+        <form enctype='multipart/form-data' action="" id="form">
+            <select type="text" name="artist" id="inputArtist" class="form-control">
                 <option value="">--Please choose an Artist--</option>
+                <option id="add-artist" value="add-album">+ Add new artist +</option>
             </select>
-            <select type="text" name="album" id="inputAlbum" class="form-control" placeholder="Album title">
-                <option value="">--Please choose an Album--</option>
+            <input type="text" style="display: none;" name="album" id="inputArtistText" class="form-control" placeholder="Artist Name" />
+            <select type="text" name="album" id="inputAlbum" class="form-control">
+                <option value="" name="">--Please choose an Album--</option>
+                <!-- <option value=""><input type="text"/></option> -->
+                <option id="add-album" value="add-album">+ Add new album +</option>
             </select>
-            <input type="text" name="song" id="inputSong" class="form-control" placeholder="Song title" />
-            <input type="file" id="avatar" name="avatar" accept="audio/*,.mp3,image/*" multiple />
+            <input type="text" name="album" id="inputAlbumText" class="form-control" placeholder="Album title" value=""/>
+            <input type="text" name="song" id="inputSong" class="form-control" placeholder="Song title"/>
+            <input type="file" id="song" name="song[]" accept="audio/*" multiple="multiple" />
             <button id="submit-button">submit</button>
         </form>
     </div>
 </body>
 <script type='module' src="admin.js"></script>
-</html>
+</html> 
