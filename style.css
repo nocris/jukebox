@@ -115,6 +115,13 @@
   margin: -1px 40px;
 }
 
+/* [ROMAIN]
+  Quand tu as de si grandes parties qui se répète, 
+  crée une classe pour mettre en commun ce qui est en commun
+  Si tu enlèves la propriété "top" les 9 autres sont répétées 4 fois 
+  ce qui fait 27 lignes en trop ! 
+*/
+
 #submit-button {
   position: fixed;
   top: 64%;
@@ -195,6 +202,10 @@
   width: auto;
   height: 52px;
 }
+/* [ROMAIN]
+  essaye de ne pas multiplier les unités, si tu utilises px et %, 
+  tu n'as pas besoin d'avoir en plus em pour tes margins et rem pour tes paddings. 
+ */
 #info{
   overflow-y: auto; 
   max-height: 300px;

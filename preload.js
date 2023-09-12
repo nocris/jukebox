@@ -29,6 +29,8 @@ contextBridge.exposeInMainWorld("versions", {
     const rows = db
       .prepare("SELECT * FROM songs WHERE album_id = " + album_id)
       .all();
+      // [ROMAIN] il y avait moyen de passer album_id à all()
+      // pour éviter les failles d'injection SQL
     console.log("I searched all songs from album id");
     return rows;
   },
@@ -38,6 +40,8 @@ contextBridge.exposeInMainWorld("versions", {
       if (err) throw err;
 
     }).run()
+    // [ROMAIN]
+    // même chose pour run, que se passe-t-il si name contient une single quote ? 
     console.log(`I post ${name} into artists table`)
     return rows
   },
@@ -46,8 +50,9 @@ contextBridge.exposeInMainWorld("versions", {
     console.log(`I received ${name} with artist_id = ${artist_id} into album table.`)
     const rows = db.prepare (`INSERT INTO albums (name, artist_id) VALUES (?,?)`)
       rows.run(name, artist_id, (err) =>{
+    // [ROMAIN] attention aux indentations
+    // ici, run est bien utilisé sans faille SQL possible
       if (err) throw err;
-    
     })
     console.log(`I post ${name} with artist_id = ${artist_id} into album table.`)
   },

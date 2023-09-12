@@ -1,6 +1,9 @@
 const artists = versions.findAllArtists();
 const albums = versions.findAllAlbums();
 const songs = versions.findAllSongs();
+// [ROMAIN]
+// très violent d'aller chercher tous les artistes, albums, songs de la DB
+// que se passerait-il si tu avais des milliers de sons ? des millions ? 
 const info = document.getElementById("info");
 
 let currentAlbum = null;
@@ -32,6 +35,9 @@ let isPlaying = false;
 //   info.appendChild(albumDiv);
 // }
 
+// [ROMAIN] 
+// pense à supprimer le code qui ne sert plus
+
 //Auto display artists
 
 function displayAlbums(artist) {
@@ -58,6 +64,9 @@ function displayAlbums(artist) {
       li.appendChild(button);
       ulAlbums.appendChild(li);
     });
+  // [ROMAIN]
+  // je sais pas si c'est aussi ton cas mais de temps en temps
+  // cliquer sur un album fait planter electron .
   artistDiv.appendChild(ulAlbums);
   info.appendChild(artistDiv);
 }
@@ -74,6 +83,9 @@ function goToAdmin(){
 
 //konami code to access admin page
 const konamiCode = ["c", "a", "s", "u", " ", "m", "a", "r", "z", "u"];
+// [ROMAIN] 
+// je pense que ça marcherait sans problème en faisant juste:
+// const konamiCode = "casu marzu"
 let konamiIndex = 0;
 
 document.addEventListener("keydown", (event) => {
